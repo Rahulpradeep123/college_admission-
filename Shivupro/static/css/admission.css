@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  min-height: 100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  background: radial-gradient(1200px 600px at 20% 10%, rgba(28,104,234,.35), transparent 55%),
+              radial-gradient(900px 500px at 90% 20%, rgba(124,120,184,.35), transparent 50%),
+              linear-gradient(90deg, #1c68ea, #7C78B8);
+}
+
+.container{
+  width: 100%;
+  max-width: 980px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 18px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.25);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  overflow:hidden;
+}
+
+.header{
+  padding: 22px 22px 10px;
+  text-align:center;
+}
+
+.header h1{
+  color:#fff;
+  font-size: 26px;
+  letter-spacing: .3px;
+}
+
+.header hr{
+  margin: 10px auto 0;
+  width: 180px;
+  border: none;
+  border-top: 2px solid rgba(255,255,255,.55);
+}
+
+.form{
+  padding: 18px 22px 26px;
+}
+
+.section-title{
+  color: rgba(255,255,255,.95);
+  font-weight: 700;
+  font-size: 16px;
+  margin: 16px 0 12px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+@media (max-width: 900px){
+  .grid{grid-template-columns: repeat(2, minmax(0, 1fr));}
+}
+
+@media (max-width: 560px){
+  .grid{grid-template-columns: 1fr;}
+}
+
+.form-field{width:100%}
+
+.form label{
+  display:block;
+  color: rgba(255,255,255,.92);
+  font-weight: 600;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.form input, .form select{
+  width:100%;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.22);
+  background: rgba(255,255,255,.09);
+  color: #0b0b0b;
+  padding: 0 14px;
+  outline: none;
+  font-size: 14.5px;
+}
+
+.form input:focus, .form select:focus{
+  border-color: rgba(255,255,255,.55);
+  box-shadow: 0 0 0 4px rgba(255,255,255,.12);
+}
+
+.actions{
+  margin-top: 18px;
+}
+
+.primary{
+  width: 100%;
+  height: 48px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 15px;
+  color: #0b0b0b;
+  background: linear-gradient(90deg, #8aeea5, #2de1fc);
+}
+
+.primary:hover{filter: brightness(1.02)}
+.primary:active{transform: translateY(1px)}
+
+.hint{
+  margin-top: 12px;
+  color: rgba(255,255,255,.85);
+  font-size: 12.5px;
+}
+

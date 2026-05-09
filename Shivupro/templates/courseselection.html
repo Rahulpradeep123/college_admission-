@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Course Selection</title>
+  <link rel="stylesheet" href="../static/css/courseselection.css" />
+  <link rel="stylesheet" href="../static/css/theme-dark.css" />
+  <style>
+    .page{max-width:1100px;margin:26px auto;padding:0 16px;}
+    .title{font-size:28px;margin:0 0 8px;}
+    .subtitle{color:rgba(255,255,255,0.75);margin-bottom:18px;}
+    .panel{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:18px;box-shadow:0 10px 25px rgba(0,0,0,0.15);}
+    .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;}
+    .field label{display:block;font-weight:800;margin-bottom:8px;letter-spacing:.2px;}
+    select{width:100%;height:40px;border-radius:10px;border:1px solid rgba(255,255,255,0.2);background:rgba(0,0,0,0.18);color:#fff;padding:0 12px;}
+    option{color:#000;}
+    .btnRow{display:flex;gap:12px;align-items:center;justify-content:space-between;margin-top:16px;flex-wrap:wrap;}
+    .btn{display:inline-block;text-decoration:none;padding:10px 14px;border-radius:10px;font-weight:800;}
+    .btn-primary{background:linear-gradient(135deg,#00c6ff,#0072ff);color:#061018;}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.25);color:#fff;}
+    .hint{color:rgba(255,255,255,0.7);font-size:13px;line-height:1.4;}
+    @media(max-width:520px){.btnRow{flex-direction:column;align-items:stretch;}}
+  </style>
+  <script>
+    function onStageChange(){
+      const stage = document.getElementById('stage').value;
+      const courseWrap = document.getElementById('courseWrap');
+      const courses = {
+        'sslc':'course-after-sslc',
+        'puc':'course-after-puc',
+        'degree':'course-after-degree'
+      };
+      courseWrap.innerHTML = document.getElementById(courses[stage]).innerHTML;
+    }
+
+    function buildRecommendationUrl(){
+      const stage = document.getElementById('stage').value;
+      const course = document.getElementById('course').value;
+      if(!stage || !course){
+        alert('Select your stage and course');
+        return false;
+      }
+      const url = '/recommend?stage=' + encodeURIComponent(stage) + '&course=' + encodeURIComponent(course);
+      window.location = url;
+      return false;
+    }
+  </script>
+</head>
+<body>
+  <div class="page">
+    <h1 class="title">Course Selection</h1>
+    <div class="subtitle">Choose what you completed, pick a course, and see the Top 5 colleges in Bengaluru.</div>
+
+    <div class="panel">
+      <div class="steps">
+        <div class="field">
+          <label for="stage">Step 1: Completed</label>
+          <select id="stage" name="stage" onchange="onStageChange()" required>
+            <option value="" selected disabled>Select</option>
+            <option value="sslc">After SSLC</option>
+            <option value="puc">After PUC</option>
+            <option value="degree">After Degree</option>
+          </select>
+        </div>
+
+        <div class="field" id="courseWrap">
+          <label for="course">Step 2: Choose Course</label>
+          <select id="course" name="course" required>
+            <option value="" selected disabled>Select stage first</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Step 3: Get Top Colleges</label>
+          <div class="btnRow">
+            <button class="btn btn-primary" type="button" onclick="buildRecommendationUrl()">Show Top 5 Colleges</button>
+            <a class="btn btn-ghost" href="/">Home</a>
+          </div>
+          <div class="hint" style="margin-top:10px;">
+            Then you can click <b>Apply</b> for the college you prefer.
+          </div>
+        </div>
+      </div>
+
+      <!-- Course select options blocks -->
+      <div id="course-after-sslc" style="display:none">
+        <select id="course" name="course" required>
+          <option value="" selected disabled>Select course</option>
+          <option value="science">Science</option>
+          <option value="commerce">Commerce</option>
+          <option value="arts">Arts</option>
+          <option value="diploma">Diploma</option>
+        </select>
+      </div>
+      <div id="course-after-puc" style="display:none">
+        <select id="course" name="course" required>
+          <option value="" selected disabled>Select course</option>
+          <option value="medical">Medical</option>
+          <option value="engineering">Engineering</option>
+          <option value="agbsc">AGBSE</option>
+          <option value="degree">Degree</option>
+        </select>
+      </div>
+      <div id="course-after-degree" style="display:none">
+        <select id="course" name="course" required>
+          <option value="" selected disabled>Select course</option>
+          <option value="mca">MCA</option>
+          <option value="mcom">MCOM</option>
+          <option value="msc">MSC</option>
+          <option value="mba">MBA</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+

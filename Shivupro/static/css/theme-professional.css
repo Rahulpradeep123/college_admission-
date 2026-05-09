@@ -1,0 +1,210 @@
+/* Professional UI theme (lightweight + consistent across pages) */
+
+:root{
+  --bg0: #0b1220;
+  --bg1: #0f172a;
+  --panel: rgba(255,255,255,.06);
+  --panel2: rgba(255,255,255,.08);
+  --border: rgba(148,163,184,.22);
+  --text: #e5e7eb;
+  --muted: #a7b0c0;
+  --accent: #14b8a6;   /* teal */
+  --accent2: #3b82f6;  /* blue */
+  --danger: #ef4444;
+  --success: #22c55e;
+  --shadow: 0 18px 55px rgba(0,0,0,.35);
+  --shadow2: 0 10px 28px rgba(0,0,0,.28);
+  --radius-xl: 18px;
+  --radius-lg: 14px;
+  --radius-md: 12px;
+}
+
+*{ box-sizing: border-box; }
+html, body{ height: 100%; }
+
+body{
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(1200px 700px at 15% -10%, rgba(20,184,166,.22), transparent 55%),
+    radial-gradient(900px 650px at 90% 0%, rgba(59,130,246,.18), transparent 45%),
+    linear-gradient(180deg, var(--bg0), var(--bg1));
+}
+
+a{ color: inherit; text-decoration: none; }
+a:hover{ opacity: .95; }
+
+/* Common layout helpers */
+.main, .container, .wrapper, .box{
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Focus */
+:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(20,184,166,.25);
+  border-color: rgba(20,184,166,.55) !important;
+}
+
+/* Inputs / Selects */
+input, select, textarea, button{
+  font: inherit;
+  color: var(--text);
+}
+
+input, select, textarea{
+  background: rgba(255,255,255,.06);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 14px;
+  width: 100%;
+}
+
+input::placeholder, textarea::placeholder{ color: rgba(229,231,235,.55); }
+
+/* Buttons */
+input[type="submit"], button, .button{
+  background: linear-gradient(180deg, rgba(20,184,166,.96), rgba(20,184,166,.70));
+  border: 1px solid rgba(20,184,166,.55);
+  color: #041417;
+  font-weight: 800;
+  padding: 12px 16px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: transform .08s ease, filter .2s ease, background .2s ease;
+  box-shadow: 0 10px 24px rgba(20,184,166,.18);
+}
+
+input[type="submit"]:hover, button:hover, .button:hover{ filter: brightness(1.05); }
+input[type="submit"]:active, button:active{ transform: translateY(1px); }
+
+/* Nav links (index page) */
+ul{ margin: 0; padding: 0; }
+
+/* Make nav text readable regardless of page CSS */
+ul li a{
+  color: rgba(229,231,235,.95) !important;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  transition: background .2s ease, border-color .2s ease;
+}
+
+ul li a:hover{
+  background: rgba(20,184,166,.12) !important;
+  border-color: rgba(20,184,166,.35) !important;
+}
+
+ul li a.active{
+  background: rgba(59,130,246,.18) !important;
+  border-color: rgba(59,130,246,.35) !important;
+}
+
+/* Video background layering */
+#va{
+  z-index: -1;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.05) contrast(1.02);
+}
+
+/* Cards / panels */
+.card, .panel, .container, .main > div, .wrapper > div{
+  border: 1px solid rgba(148,163,184,.20);
+  background: rgba(255,255,255,.04);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow2);
+}
+
+/* Admin auth pages (login/register) */
+.auth-page{
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.auth-card{
+  width: 100%;
+  max-width: 520px;
+  border: 1px solid rgba(148,163,184,.22);
+  background: rgba(255,255,255,.05);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow2);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 26px 26px 22px;
+}
+
+.auth-card h3{
+  text-align: center;
+  margin-bottom: 18px;
+  font-size: 20px;
+}
+
+.auth-card form{ margin: 0; }
+
+/* Login/signup containers were overly styled; normalize them */
+.container{
+  border: 1px solid rgba(148,163,184,.20) !important;
+  background: rgba(255,255,255,.05) !important;
+  backdrop-filter: blur(12px);
+}
+
+
+/* Headings */
+h1, h2, h3{
+  letter-spacing: -.02em;
+}
+
+/* HR */
+hr{ border: none; height: 1px; background: rgba(148,163,184,.28); margin: 14px 0; }
+
+/* Table styling for admin dashboard */
+table{
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid rgba(148,163,184,.22);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: rgba(255,255,255,.04);
+}
+
+th, td{
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(148,163,184,.14);
+  text-align: left;
+}
+
+th{
+  background: rgba(255,255,255,.06);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-size: 12px;
+  color: rgba(229,231,235,.9);
+}
+
+tr:hover td{ background: rgba(255,255,255,.04); }
+
+/* Admin delete buttons */
+form button{
+  background: linear-gradient(180deg, rgba(239,68,68,.96), rgba(239,68,68,.70)) !important;
+  border-color: rgba(239,68,68,.55) !important;
+  color: #1a0a0a !important;
+}
+
+/* Responsive */
+@media (max-width: 768px){
+  body{ padding: 12px; }
+  h1{ font-size: clamp(1.6rem, 5vw, 2.4rem); }
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ scroll-behavior: auto !important; transition: none !important; }
+}
+

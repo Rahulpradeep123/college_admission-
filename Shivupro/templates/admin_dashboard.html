@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+<style>
+        /* Keep only the minimal bits; rest comes from theme-professional.css */
+        body { margin: 20px; }
+        h2 { text-align: center; margin: 18px 0; }
+        a.logout-link { display: block; text-align: center; margin-top: 18px; font-weight: 700; }
+        a.logout-link:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            body { margin: 12px; }
+        }
+    </style>
+
+<link rel="stylesheet" href="../static/css/theme-professional.css">
+</head>
+<body>
+    <h2>User Dashboard</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>user name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>
+                    <a href="/student_details?email={{ user[1] }}">{{ user[0] }}</a>
+                </td>
+                <td>
+                    <form method="POST" action="{{ url_for('delete_user') }}">
+                        <input type="hidden" name="username" value="{{ user[0] }}">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+    <a class="logout-link" href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>
+

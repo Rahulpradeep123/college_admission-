@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Student Details</title>
+  <link rel="stylesheet" href="../static/css/theme-professional.css" />
+  <style>
+    body { margin: 20px; }
+    h2 { text-align: center; margin: 18px 0; }
+    .card { max-width: 900px; margin: 0 auto; padding: 16px; border: 1px solid rgba(0,0,0,0.12); border-radius: 12px; background: rgba(255,255,255,0.7); }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .item { padding: 10px; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; background: rgba(255,255,255,0.6); }
+    .label { font-weight: 900; font-size: 12px; color: rgba(0,0,0,0.65); }
+    .value { margin-top: 6px; font-size: 14px; }
+    .actions { text-align: center; margin-top: 18px; }
+    a.back { display: inline-block; padding: 10px 14px; border-radius: 10px; background: #ae3c33; color: #fff; text-decoration: none; font-weight: 900; }
+  </style>
+</head>
+<body>
+  <h2>Student Details</h2>
+
+  <div class="card">
+    {% if student %}
+      <div class="grid">
+        <div class="item"><div class="label">Full Name</div><div class="value">{{ student[0] }}</div></div>
+        <div class="item"><div class="label">Email</div><div class="value">{{ student[1] }}</div></div>
+        <div class="item"><div class="label">Date of Birth</div><div class="value">{{ student[2] }}</div></div>
+        <div class="item"><div class="label">Nationality</div><div class="value">{{ student[3] }}</div></div>
+        <div class="item"><div class="label">Phone</div><div class="value">{{ student[4] }}</div></div>
+        <div class="item"><div class="label">Password</div><div class="value">{{ student[5] }}</div></div>
+        <div class="item" style="grid-column: 1 / -1;"><div class="label">Address</div><div class="value">{{ student[6] }}</div></div>
+        <div class="item" style="grid-column: 1 / -1;"><div class="label">Gender</div><div class="value">{{ student[7] }}</div></div>
+      </div>
+    {% else %}
+      <div style="text-align:center; padding: 22px;">
+        No details found for <b>{{ email }}</b>.
+      </div>
+    {% endif %}
+
+    <div class="actions">
+      <a class="back" href="{{ url_for('admin_dashboard') }}">Back to Dashboard</a>
+    </div>
+  </div>
+</body>
+</html>
+

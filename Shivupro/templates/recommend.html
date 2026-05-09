@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Top Colleges - Bengaluru</title>
+  <link rel="stylesheet" href="../static/css/theme-professional.css" />
+  <link rel="stylesheet" href="../static/css/admission.css" />
+  <style>
+    .page-container{max-width:1100px;margin:30px auto;padding:0 16px;}
+    .header{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;justify-content:space-between;}
+    .header h1{margin:0;font-size:28px;}
+    .subnote{color:rgba(255,255,255,0.8);margin-top:6px;}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:18px;}
+    .card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:16px;box-shadow:0 10px 25px rgba(0,0,0,0.15);}
+    .card h3{margin:0 0 6px;font-size:18px;}
+    .meta{font-size:13px;color:rgba(255,255,255,0.8);line-height:1.5;}
+    .actions{margin-top:12px;display:flex;gap:10px;align-items:center;justify-content:space-between;}
+    .btn{display:inline-block;text-decoration:none;padding:10px 12px;border-radius:10px;font-weight:700;letter-spacing:.2px;}
+    .btn-primary{background:linear-gradient(135deg,#00c6ff,#0072ff);color:#061018;}
+    .btn-primary:hover{filter:brightness(1.05);}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.25);color:#fff;}
+    .btn-ghost:hover{background:rgba(255,255,255,0.06);}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;font-size:12px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);}
+    @media (max-width:520px){.actions{flex-direction:column;align-items:stretch;}}
+  </style>
+</head>
+<body>
+  <div class="page-container">
+    <div class="header">
+      <div>
+        <h1>Top 5 Colleges in Bengaluru</h1>
+        <div class="subnote">
+          For: <b>{{ course_title }}</b>
+        </div>
+      </div>
+      <a class="btn btn-ghost" href="/courseselection">Change Selection</a>
+    </div>
+
+    <div style="margin-top:14px;">
+      <span class="pill">City: Bengaluru</span>
+      <span class="pill" style="margin-left:8px;">Stream: {{ stage }}</span>
+    </div>
+
+    <div class="grid">
+      {% for col in colleges %}
+        <div class="card">
+          <h3>{{ col.name }}</h3>
+          <div class="meta">
+            <div><b>Why it fits:</b> {{ col.reason }}</div>
+            <div style="margin-top:6px;">Affiliation/Approach: {{ col.type }}</div>
+          </div>
+          <div class="actions">
+            <div style="flex:1;">
+              <div class="meta">Estimated intake: {{ col.estimated_intake }}</div>
+            </div>
+            <div style="display:flex;gap:10px;align-items:center;">
+              {% if col.website %}
+                <a class="btn btn-ghost" href="{{ col.website }}" target="_blank" rel="noopener noreferrer">Website</a>
+              {% endif %}
+              <a class="btn btn-primary" href="/apply?course={{ course_slug }}&college={{ col.slug }}">Apply</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+</html>
+

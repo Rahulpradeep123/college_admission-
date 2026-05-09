@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Admission</title>
+  <link rel="stylesheet" href="../static/css/admission.css" />
+  <link rel="stylesheet" href="../static/css/theme-professional.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Student Admission</h1>
+      <hr />
+    </div>
+
+    <div class="form">
+      <form action="/apply_action" method="post">
+        <div class="section-title">Personal Details</div>
+        <div class="grid">
+          <div class="form-field">
+            <label for="fullname">Full Name</label>
+            <input type="text" id="fullname" name="fullname" placeholder="Enter your name" required />
+          </div>
+
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required />
+          </div>
+
+          <div class="form-field">
+            <label for="date">Date of Birth</label>
+            <input type="date" id="date" name="date" required />
+          </div>
+
+          <div class="form-field">
+            <label for="gender">Gender</label>
+            <select id="gender" name="gender" required>
+              <option value="" disabled selected>Select gender</option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>Others</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="section-title">Identity Details</div>
+        <div class="grid">
+          <div class="form-field">
+            <label for="nationality">Nationality</label>
+            <input type="text" id="nationality" name="nationality" placeholder="Enter Nationality" required />
+          </div>
+
+          <div class="form-field">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" maxlength="10" pattern="[0-9]{10}" placeholder="Enter phone number" required />
+          </div>
+
+          <div class="form-field">
+            <label for="address">Address</label>
+            <input type="text" id="address" name="Address" placeholder="Enter Address" required />
+          </div>
+
+          <div class="form-field">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Create password" required />
+          </div>
+        </div>
+
+        <div class="section-title">Course Preference (Optional - UI only)</div>
+        <div class="grid">
+          <div class="form-field">
+            <label for="course">Course / Stream</label>
+            <input type="text" id="course" name="course" placeholder="e.g., BSc, MBA, Engineering" />
+          </div>
+
+          <div class="form-field">
+            <label for="college">College Preference</label>
+            <input type="text" id="college" name="college" placeholder="Enter preferred college" />
+          </div>
+
+          <div class="form-field">
+            <label for="qualification">Qualification</label>
+            <input type="text" id="qualification" name="qualification" placeholder="e.g., PUC/12th/UG" />
+          </div>
+
+          <div class="form-field">
+            <label for="category">Category</label>
+            <select id="category" name="category">
+              <option value="">Select category</option>
+              <option>General</option>
+              <option>OBC</option>
+              <option>SC</option>
+              <option>ST</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="city">City</label>
+            <input type="text" id="city" name="city" placeholder="Enter city" />
+          </div>
+
+          <div class="form-field">
+            <label for="state">State</label>
+            <input type="text" id="state" name="state" placeholder="Enter state" />
+          </div>
+
+          <div class="form-field">
+            <label for="parent_name">Parent / Guardian Name</label>
+            <input type="text" id="parent_name" name="parent_name" placeholder="Enter parent name" />
+          </div>
+
+          <div class="form-field">
+            <label for="parent_phone">Parent Phone</label>
+            <input type="tel" id="parent_phone" name="parent_phone" maxlength="10" pattern="[0-9]{10}" placeholder="Enter parent phone" />
+          </div>
+        </div>
+
+        <div class="section-title">Selected Course & College</div>
+        <div class="grid">
+          <input type="hidden" name="course" id="course" value="{{ course if course else '' }}" />
+          <input type="hidden" name="college" id="college" value="{{ college if college else '' }}" />
+
+          <div class="form-field" style="grid-column:1 / -1;">
+            <div style="padding:12px 14px;border-radius:12px;border:1px solid rgba(0,0,0,0.15);background:rgba(255,255,255,0.7);">
+              <div style="font-weight:900;">Applying for: <span id="courseText">{{ course if course else '—' }}</span></div>
+              <div style="margin-top:6px;">College: <span id="collegeText">{{ college if college else '—' }}</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="primary" type="submit">Submit Admission</button>
+          <div class="hint">Your application will be saved with course and college selection.</div>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
+
